@@ -27,18 +27,63 @@ Then("Perform the click functions on the login page", () => {
   loginPage.clickLogin();
   cy.wait(1000);
   loginPage.clickforgot();
-  cy.wait(5000);
+  cy.wait(2000);
   loginPage.clickbacktologinfromforgot();
-  cy.wait(5000);
+  cy.wait(2000);
   loginPage.clicksignup();
-  cy.wait(5000);
+  cy.wait(2000);
   loginPage.clickbacktologinfromsignup();
   })
 
   Then("Leave the fields empty and directly click the Log In button", () => {
-    loginPage.clickUsername();
-    loginPage.clickPassword();
     loginPage.clickLogin();
+    cy.xpath('//p[text()="Email is required"]').should('exist');
+    cy.xpath('//p[text()="Password is required"]').should('exist');
+    cy.screenshot()
+    })
+  
+  Then("Enter the invalid email id", () => {
+      loginPage.typeUsername("sample@yopmail.com");
+    })
+  
+  Then("Enter the registered email id", () => {
+      loginPage.typeUsername("sample@yopmail.com");
+    })
+
+  Then("Enter the invalid password", () => {
+      loginPage.typePassword("sample@yopmail.com");
+    })  
+
+  Then("Enter the registered password", () => {
+      loginPage.typePassword("sample@yopmail.com");
+    })
+  
+  Then("Click the Remember me checkbox", () => {
+      loginPage.clickrememberme;
+    })
+  
+  Then("Click Log In button", () => {
+      loginPage.clickLogin;
+      cy.screenshot()
+    })
+
+  Then("User clicks the forgot your password? link text", () => {
+      loginPage.clickforgot;
+      cy.screenshot()
+
+    })
+  Then("User clicks the click here to signup link text", () => {
+      loginPage.clicksignup;
+      cy.screenshot()
+
+    })
+
+  Then("Click the eye icon and the field shows the password characters.", () => {
+      loginPage.clickpasswordvisible;
+    })
+
+  Then("Again, click the eye icon and the field hides the password characters and vice versa.", () => {
+      loginPage.clickpasswordvisible;
     })
 
 
@@ -46,29 +91,6 @@ Then("Perform the click functions on the login page", () => {
 
 
 
-Then("Leave the fields empty and directly click the next button in forgot", ()=>{
-   cy.wait(2000);
-   forgotPage.linkTextForgot();
-   cy.wait(2000);
-   forgotPage.clicknext();
-})
-
-
-
-
-
-
-
-
-
-Then("Fill the fields and click the next button in forgot", ()=>{
-  cy.wait(2000);
-  forgotPage.linkTextForgot();
-  cy.wait(2000);
-  //cy.xpath('//input[@placeholder="E-Mail"]').type('myUsername');
-  forgotPage.typeUsername("Gobinath")
-  forgotPage.clicknext();
-})
 
 
 

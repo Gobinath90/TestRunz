@@ -17,12 +17,46 @@ Feature: Login page
         Given A web browser is at the Testrunz login page
         Then Leave the fields empty and directly click the Log In button
 
-
-    Scenario: TC_TRUNZ_01_05: Verify when user does not logged In with empty credentials
+    Scenario: TC_TRUNZ_01_06: Verify whether the user should not be logged In with invalid "email id" and valid "password"
         Given A web browser is at the Testrunz login page
-        Then Leave the fields empty and directly click the next button in forgot
+        Then Enter the invalid email id
+        Then Enter the registered password
+        Then Click Log In button
 
-    Scenario: TC_TRUNZ_01_05: Verify when user does not logged In with empty credentials
+    Scenario: TC_TRUNZ_01_07: Verify whether the user should not be logged In with valid "email id" and "invalid password"
         Given A web browser is at the Testrunz login page
-        Then  Fill the fields and click the next button in forgot
+        Then Enter the registered email id
+        Then Enter the invalid password
+        Then Click Log In button
 
+    Scenario: TC_TRUNZ_01_08: Verify whether the user should not be logged In with invalid "email id" and "invalid password"
+        Given A web browser is at the Testrunz login page
+        Then Enter the invalid email id
+        Then Enter the invalid password
+        Then Click Log In button
+    
+    Scenario: TC_TRUNZ_01_09: Verify whether the user should be able to log In with valid credentials with clicking the checkbox
+        Given A web browser is at the Testrunz login page
+        Then Enter the registered email id
+        Then Enter the registered password 
+        Then Click the Remember me checkbox 
+        Then Click Log In button
+
+    Scenario: TC_TRUNZ_01_10: Verify whether the user should be able to log In with valid credentials without clicking the checkbox
+        Given A web browser is at the Testrunz login page
+        Then Enter the registered email id 
+        Then Enter the registered password 
+        Then Click Log In button
+    
+    Scenario: TC_TRUNZ_01_11: Verify whether the user is able to redirected to the corresponding page when the user clicks "forgot your password ?"
+        Given A web browser is at the Testrunz login page
+        Then User clicks the forgot your password? link text 
+
+    Scenario: TC_TRUNZ_01_12: Verify whether the user is able to redirected to the corresponding page when the user clicks "click here to signup!"
+        Given A web browser is at the Testrunz login page
+        Then User clicks the click here to signup link text 
+    
+    Scenario: TC_TRUNZ_01_13: Verify whether the eye icon is present in the password field is should be clickable
+        Given A web browser is at the Testrunz login page
+        Then Click the eye icon and the field shows the password characters.
+        Then Again, click the eye icon and the field hides the password characters and vice versa.
